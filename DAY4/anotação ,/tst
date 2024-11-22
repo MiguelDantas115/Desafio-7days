@@ -1,2 +1,2 @@
 ..
-A combinação de Math.floor() e Math.random() é uma ferramenta valiosa em JavaScript para introduzir aleatoriedade nas aplicações. Essa técnica permite gerar números inteiros aleatórios dentro de qualquer intervalo desejado, tornando suas aplicações mais dinâmicas e interativas. Seja em jogos ou simulações, entender como usar essas funções pode ampliar suas possibilidades criativas e melhorar a experiência do usuário.
+A combinação de Math.floor() e Math.random() é para introduzir aleatoriedade nas aplicações. Essa técnica permite gerar números inteiros aleatórios dentro de qualquer intervalo desejado, tornando suas aplicações mais dinâmicas e interativas. Seja em jogos ou simulações
