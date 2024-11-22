@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Aprendizado</title>
+</head>
+<body>
+    <script>
+        // Função principal do jogo
+function iniciarJogo() {
+    // Escolha da área: Front-End ou Back-End
+    let area = prompt("Você quer seguir para a área de:\n1. Front-End\n2. Back-End");
+    
+    if (area === "1") {
+        // Escolha no Front-End: React ou Vue
+        let frontEnd = prompt("Você quer aprender:\n1. React\n2. Vue");
+        var areaEscolhida = "Front-End";
+        var tecnologiaEscolhida = frontEnd === "1" ? "React" : "Vue";
+    } else if (area === "2") {
+        // Escolha no Back-End: C# ou Java
+        let backEnd = prompt("Você quer aprender:\n1. C#\n2. Java");
+        var areaEscolhida = "Back-End";
+        var tecnologiaEscolhida = backEnd === "1" ? "C#" : "Java";
+    } else {
+        alert("Opção inválida! O jogo será encerrado.");
+        return;
+    }
+
+    // Especialização ou Fullstack
+    let especializacao = prompt(`Você deseja:\n1. Se especializar em ${tecnologiaEscolhida}\n2. Se tornar Fullstack`);
+    
+    if (especializacao === "1") {
+        alert(`Ótima escolha! Você está se especializando em ${tecnologiaEscolhida} na área de ${areaEscolhida}.`);
+    } else if (especializacao === "2") {
+        alert(`Excelente! Você está se desenvolvendo para se tornar Fullstack.`);
+    } else {
+        alert("Opção inválida! O jogo será encerrado.");
+        return;
+    }
+
+    // Perguntar sobre tecnologias adicionais
+    let tecnologias = [];
+    let maisTecnologias = true;
+
+    while (maisTecnologias) {
+        let tecnologia = prompt("Qual tecnologia você gostaria de aprender?");
+        tecnologias.push(tecnologia);
+        
+        maisTecnologias = confirm("Tem mais alguma tecnologia que você gostaria de aprender?");
+    }
+
+    // Mensagem final com as tecnologias escolhidas
+    alert("Você escolheu aprender as seguintes tecnologias: " + tecnologias.join(", ") + ".");
+    
+    // Comentários sobre cada tecnologia
+    tecnologias.forEach(tecnologia => {
+        alert(`Ótima escolha! ${tecnologia} é uma tecnologia muito valorizada no mercado.`);
+    });
+}
+
+// Iniciar o jogo
+iniciarJogo();
+    </script>
+</body>
+</html>
