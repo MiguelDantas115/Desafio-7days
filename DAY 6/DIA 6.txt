@@ -1,0 +1,110 @@
+// Objeto que representa a lista de compras, com categorias como propriedades e arrays para armazenar itens
+let listaDeCompras = {
+    Frutas: [],       // Lista para itens da categoria "Frutas"
+    Laticínios: [],   // Lista para itens da categoria "Laticínios"
+    Congelados: [],   // Lista para itens da categoria "Congelados"
+    Doces: [],        // Lista para itens da categoria "Doces"
+    Outros: []        // Lista para itens de outras categorias
+};
+
+// Função principal para gerenciar o programa de lista de compras
+function adicionarOuRemoverItem() {
+    let continuar = true; // Variável para controlar o loop principal
+
+    while (continuar) {
+        // Pergunta ao usuário o que deseja fazer
+        let opcao = prompt(`O que você deseja fazer?
+        1. Adicionar um item
+        2. Remover um item
+        3. Finalizar lista`).trim();
+
+        // Processa a escolha do usuário
+        if (opcao === "1") {
+            adicionarItem(); // Chama a função para adicionar um item
+        } else if (opcao === "2") {
+            // Verifica se a lista está vazia antes de permitir a remoção
+            if (listaVazia()) {
+                alert("A lista está vazia. Adicione itens antes de tentar remover.");
+            } else {
+                removerItem(); // Chama a função para remover um item
+            }
+        } else if (opcao === "3") {
+            continuar = false; // Sai do loop principal
+        } else {
+            alert("Opção inválida! Escolha 1, 2 ou 3."); // Validação de entrada
+        }
+    }
+
+    exibirLista(); // Exibe a lista final após o loop
+}
+
+// Função para adicionar itens à lista de compras
+function adicionarItem() {
+    // Solicita o nome do item e a categoria ao usuário
+    let comida = prompt("Qual comida você deseja adicionar?");
+    let categoria = prompt(`Em qual categoria essa comida se encaixa? 
+    (Frutas, Laticínios, Congelados, Doces, Outros)`).toLowerCase();
+
+    // Adiciona o item à categoria correspondente usando o switch
+    switch (categoria) {
+        case "frutas":
+            listaDeCompras.Frutas.push(comida);
+            break;
+        case "laticínios":
+            listaDeCompras.Laticínios.push(comida);
+            break;
+        case "congelados":
+            listaDeCompras.Congelados.push(comida);
+            break;
+        case "doces":
+            listaDeCompras.Doces.push(comida);
+            break;
+        default: // Caso a categoria não seja reconhecida, adiciona em "Outros"
+            listaDeCompras.Outros.push(comida);
+            break;
+    }
+}
+
+// Função para remover itens da lista de compras
+function removerItem() {
+    exibirLista(); // Exibe a lista atual para ajudar o usuário a escolher o item
+    let itemParaRemover = prompt("Digite o nome do item que deseja remover:");
+
+    let itemEncontrado = false; // Variável para rastrear se o item foi encontrado
+    for (let categoria in listaDeCompras) {
+        // Verifica se o item existe na categoria atual
+        let index = listaDeCompras[categoria].indexOf(itemParaRemover);
+        if (index !== -1) {
+            // Remove o item da categoria usando splice
+            listaDeCompras[categoria].splice(index, 1);
+            itemEncontrado = true;
+            alert(`"${itemParaRemover}" foi removido da categoria ${categoria}.`);
+            break;
+        }
+    }
+
+    if (!itemEncontrado) {
+        alert("Não foi possível encontrar o item dentro da lista!"); // Mensagem caso o item não exista
+    }
+}
+
+// Função para exibir a lista de compras no console
+function exibirLista() {
+    console.log("Lista de compras:");
+    for (let categoria in listaDeCompras) {
+        // Exibe a categoria e seus itens ou indica que está vazia
+        if (listaDeCompras[categoria].length > 0) {
+            console.log(`${categoria}: ${listaDeCompras[categoria].join(", ")}`);
+        } else {
+            console.log(`${categoria}:`);
+        }
+    }
+}
+
+// Função para verificar se todas as categorias da lista estão vazias
+function listaVazia() {
+    return Object.values(listaDeCompras).every(categoria => categoria.length === 0);
+}
+
+// Inicia o programa chamando a função principal
+adicionarOuRemoverItem();

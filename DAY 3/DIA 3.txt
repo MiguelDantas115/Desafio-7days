@@ -1,0 +1,55 @@
+// Primeira escolha: Front-End ou Back-End
+let area = prompt("Você quer seguir para a área de Front-End ou Back-End?").toLowerCase();
+
+// Variável para armazenar a tecnologia escolhida
+let tecnologia = "";
+
+// Escolha de tecnologia dependendo da área escolhida
+if (area === "front-end") {
+  tecnologia = prompt("Você quer aprender React ou Vue?").toLowerCase();
+} else if (area === "back-end") {
+  tecnologia = prompt("Você quer aprender C# ou Java?").toLowerCase();
+} else {
+  console.log("Opção inválida. Por favor, escolha 'Front-End' ou 'Back-End'.");
+}
+
+// Segunda escolha: Especialização ou Fullstack
+let caminho = prompt("Você quer se especializar na área escolhida ou se tornar Fullstack?").toLowerCase();
+
+// Pergunta sobre tecnologias adicionais
+let tecnologiasAprendidas = [];
+let continuar = true;
+
+while (continuar) {
+  let tecnologiaNova = prompt("Tem mais alguma tecnologia que você gostaria de aprender?");
+  tecnologiasAprendidas.push(tecnologiaNova);
+
+  // Pergunta se o usuário deseja adicionar mais tecnologias
+  continuar = prompt("Você quer adicionar mais alguma tecnologia? Responda 'ok' para continuar ou 'não' para finalizar.").toLowerCase() === 'ok';
+}
+
+// Exibindo o resumo das escolhas
+console.log(`Você escolheu a área de ${area} e está aprendendo ${tecnologia}.`);
+console.log(`Você escolheu seguir como ${caminho}.`);
+console.log("Tecnologias que você gostaria de aprender:");
+tecnologiasAprendidas.forEach((tech, index) => {
+  console.log(`${index + 1}. ${tech}`);
+});
+
+// Mensagem personalizada com base na escolha
+if (area === "front-end") {
+  console.log("Ótima escolha! Front-End é uma área cheia de oportunidades, e as tecnologias React e Vue são altamente requisitadas.");
+} else if (area === "back-end") {
+  console.log("C# e Java são linguagens poderosas para Back-End. Boa sorte na sua jornada!");
+} else {
+  console.log("Parece que houve um erro na sua escolha. Tente novamente com 'Front-End' ou 'Back-End'.");
+}
+
+// Exibindo a escolha de caminho
+if (caminho === "especializar") {
+  console.log("Você decidiu se especializar! Excelente escolha para se tornar um expert em sua área.");
+} else if (caminho === "fullstack") {
+  console.log("Você escolheu se tornar Fullstack! Parabéns pela coragem de se aventurar em ambos os mundos.");
+} else {
+  console.log("Caminho inválido. Tente novamente.");
+}

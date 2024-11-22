@@ -1,0 +1,76 @@
+// Funções para cada operação
+function somar(a, b) {
+    return a + b;
+}
+
+function subtrair(a, b) {
+    return a - b;
+}
+
+function multiplicar(a, b) {
+    return a * b;
+}
+
+function dividir(a, b) {
+    if (b === 0) {
+        return "Erro: Divisão por zero!";
+    }
+    return a / b;
+}
+
+// Função principal da calculadora
+function calculadora() {
+    let continuar = true;
+
+    while (continuar) {
+        let operacao = prompt(`Escolha uma operação:
+        1. Soma
+        2. Subtração
+        3. Multiplicação
+        4. Divisão
+        5. Sair`).trim();
+
+        if (operacao === "5") {
+            alert("Até a próxima!");
+            continuar = false;
+            break;
+        }
+
+        if (!["1", "2", "3", "4"].includes(operacao)) {
+            alert("Opção inválida! Escolha entre 1 e 5.");
+            continue;
+        }
+
+        let numero1 = parseFloat(prompt("Digite o primeiro número:"));
+        let numero2 = parseFloat(prompt("Digite o segundo número:"));
+
+        if (isNaN(numero1) || isNaN(numero2)) {
+            alert("Por favor, insira números válidos!");
+            continue;
+        }
+
+        let resultado;
+
+        switch (operacao) {
+            case "1":
+                resultado = somar(numero1, numero2);
+                alert(`Resultado: ${numero1} + ${numero2} = ${resultado}`);
+                break;
+            case "2":
+                resultado = subtrair(numero1, numero2);
+                alert(`Resultado: ${numero1} - ${numero2} = ${resultado}`);
+                break;
+            case "3":
+                resultado = multiplicar(numero1, numero2);
+                alert(`Resultado: ${numero1} * ${numero2} = ${resultado}`);
+                break;
+            case "4":
+                resultado = dividir(numero1, numero2);
+                alert(`Resultado: ${numero1} / ${numero2} = ${resultado}`);
+                break;
+        }
+    }
+}
+
+// Executa a calculadora
+calculadora();
